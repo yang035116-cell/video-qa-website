@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>添加视频到视频库</h1>
+    
+    {% if message %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endif %}
+    
+    <form method="POST" class="video-form">
+        <div class="form-group">
+            <label for="urls">YouTube视频URL（每行一个）:</label>
+            <textarea id="urls" name="urls" rows="10" placeholder="例如:
+https://www.youtube.com/watch?v=视频ID1
+https://www.youtube.com/watch?v=视频ID2
+https://www.youtube.com/watch?v=视频ID3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">添加视频</button>
+    </form>
+    
+    <div class="tips">
+        <h3>使用提示：</h3>
+        <ul>
+            <li>每行输入一个YouTube视频URL</li>
+            <li>确保视频有字幕（系统会自动提取）</li>
+            <li>添加视频后，系统会自动提取标题、描述和字幕</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

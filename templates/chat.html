@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <h1>视频问答</h1>
+    
+    <div class="chat-interface">
+        <div class="chat-history">
+            {% if question %}
+            <div class="message user-message">
+                <div class="message-content">
+                    <strong>您:</strong> {{ question }}
+                </div>
+            </div>
+            
+            <div class="message bot-message">
+                <div class="message-content">
+                    <strong>助手:</strong> 
+                    <div class="answer">{{ answer | safe }}</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="chat-input">
+            <form method="POST">
+                <div class="input-group">
+                    <input type="text" name="question" placeholder="请输入您的问题..." required>
+                    <button type="submit" class="btn btn-primary">发送</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    {% if results %}
+    <div class="search-results">
+        <h2>相关视频片段</h2>
+        {% for result in results %}
+        <div class="result-item">
+            <h3>{{ result.title }}</h3>
+            <p class="timestamp">
+                <a href="{{ result.url }}&t={{ result.timestamp_seconds }}s" target="_blank">
+                    时间点: {{ result.timestamp }}
+                </a>
+            </p>
+            <p class="context">{{ result.context }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

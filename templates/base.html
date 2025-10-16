@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频问答网站</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-logo">视频问答网站</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="{{ url_for('index') }}" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('add_videos') }}" class="nav-link">添加视频</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('video_list') }}" class="nav-link">视频列表</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('chat') }}" class="nav-link">问答</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('auto_build') }}" class="nav-link">自动构建</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 视频问答网站. 所有权利保留.</p>
+    </footer>
+</body>
+</html>

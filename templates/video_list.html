@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>视频库列表</h1>
+    
+    {% if videos %}
+    <div class="video-grid">
+        {% for video in videos %}
+        <div class="video-card">
+            <div class="video-info">
+                <h3>{{ video[2] }}</h3>
+                <p class="video-url"><a href="{{ video[1] }}" target="_blank">{{ video[1] }}</a></p>
+                <p class="video-description">{{ video[3][:100] }}...</p>
+                <div class="video-meta">
+                    <span>字幕长度: {{ video[4] | length }} 字符</span>
+                </div>
+                <p class="video-date">添加时间: {{ video[5] }}</p>
+                <div class="video-actions">
+                    <a href="{{ video[1] }}" target="_blank" class="btn btn-small">观看视频</a>
+                    <a href="{{ url_for('chat') }}?question={{ video[2] | urlencode }}" class="btn btn-small">相关问答</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>视频库为空，请先<a href="{{ url_for('add_videos') }}">添加视频</a></p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

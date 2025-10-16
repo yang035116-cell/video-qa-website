@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="hero-content">
+        <h1>欢迎来到视频问答网站</h1>
+        <p>基于YouTube视频内容的智能问答系统</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('add_videos') }}" class="btn btn-primary">添加视频</a>
+            <a href="{{ url_for('chat') }}" class="btn btn-secondary">开始问答</a>
+        </div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature">
+        <h3>手动构建视频库</h3>
+        <p>输入YouTube视频URL，构建专属视频库作为问答基础</p>
+    </div>
+    <div class="feature">
+        <h3>智能问答</h3>
+        <p>基于视频内容进行多轮问答，提供相关视频片段</p>
+    </div>
+    <div class="feature">
+        <h3>时间点跳转</h3>
+        <p>点击时间点直接跳转到视频相关位置开始播放</p>
+    </div>
+</div>
+{% endblock %}
